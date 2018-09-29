@@ -45,6 +45,7 @@ class Home extends React.Component {
 	}
 
 	render() {
+		console.log(this.state.articles)
 		const { classes } = this.props
 		return (
 			<div>
