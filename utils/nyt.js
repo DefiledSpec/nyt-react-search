@@ -55,7 +55,4 @@ const nyt = {
 	}
 }
 
-// let cats = nyt.search('cats')
-// cats.then(articles => console.log(articles.data.response.docs[0]))
-
 module.exports = nyt
