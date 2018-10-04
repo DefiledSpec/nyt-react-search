@@ -15,7 +15,7 @@ app.use(logger('dev'))
 
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
-app.use(express.static('client/build/static'))
+app.use(express.static('client/build'))
 
 mongoose.Promise = Promise
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
