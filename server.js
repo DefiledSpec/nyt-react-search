@@ -29,6 +29,6 @@ app.use((req, res, next) => {
 app.use(cors())
 
 app.use('/api', apiRoutes)
-app.get('*', (req, res) => res.sendFile('client/build/index.html'))
+app.get('*', (req, res) => res.sendFile('./client/build/index.html'))
 
 app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}`))
