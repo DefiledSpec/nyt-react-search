@@ -33,7 +33,6 @@ const nyt = {
 			let res = await axios.get(this.mostViewed, { method: 'GET' })
 			let { results } = res.data
 			let articles = results.map((article, i) => {
-				console.log(article)
 				let published = article.published_date
 				let summary = article.snippet
 				if(article.abstract.startsWith('<p>') && article.abstract.endsWith('</p>')) {
