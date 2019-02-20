@@ -17,6 +17,7 @@ class Article extends React.Component {
 		let imgURL = typeof this.props.img === 'object' ? this.props.img.url : this.props.img
 		API.save({title, summary, url, img: imgURL, published})
 	}
+	
 	handleRemove = (id) => {
 		console.log(id)
 		API.remove(id)

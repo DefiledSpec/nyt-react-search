@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const apiRoutes = require('./routes/apiRoutes')
 const Article = require('./controllers/savedArticles')
+const path = require('path')
 
 const app = express()
 const PORT = process.env.PORT || 3001
@@ -30,7 +31,7 @@ app.use((req, res, next) => {
 app.use(cors())
 
 app.use('/api', apiRoutes)
-app.get('*', (req, res) => res.sendFile('client/build/index.html'))
+app.get('*', (req, res) => res.sendFile(path.join('/client/build/index.html')))
 
 app.listen(PORT, () => {
 	console.log(`App listening at http://localhost:${PORT}`)
