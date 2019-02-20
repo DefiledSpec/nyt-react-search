@@ -38,14 +38,16 @@ const nyt = {
 				if(article.abstract.startsWith('<p>') && article.abstract.endsWith('</p>')) {
 					summary = article.abstract.substring(3, article.abstract.length - 4)
 				}
-				return {
+				const articleList = {
 					id: i,
 					title: article.title,
 					url: article.url,
-					img: article.media.filter(media => media.type === 'image')[0]['media-metadata'][1].url.substring(25),
+					img: article.media.length > 0 ? article.media.filter(media => media.type === 'image')[0]['media-metadata'][1].url.substring(25) : 'no-img.png',
 					summary,
 					published
 				}
+				console.log(articleList)
+				return articleList
 			})
 			return articles
 		} catch(err) {

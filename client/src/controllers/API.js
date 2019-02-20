@@ -7,6 +7,7 @@ const API = {
 	},
 	async popular() {
 		let articles = await axios.get(`/api/popular`)
+		console.log(articles)
 		return articles.data
 	},
 	save: async (article) => {

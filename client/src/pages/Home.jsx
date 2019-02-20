@@ -30,10 +30,13 @@ class Home extends React.Component {
 	}
 
 	componentDidMount = () => {
-		API.popular().then(data => this.setState({
-			articles: data,
-			status: `Displaying top ${data.length} most viewed articles.`
-		}))
+		API.popular().then(data => {
+			console.log(data)
+			this.setState({
+				articles: data,
+				status: `Displaying top ${data.length} most viewed articles.`
+			})
+		})
 	}
 
 	handleSearch = (query) => {
