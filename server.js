@@ -9,11 +9,12 @@ const Article = require('./controllers/savedArticles')
 const app = express()
 const PORT = process.env.PORT || 3001
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoNYT'
+const limit = '50mb'
 
 app.use(logger('dev'))
 
-app.use(bodyParser.json({ limit: '50mb' }))
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+app.use(bodyParser.json({ limit }))
+app.use(bodyParser.urlencoded({ limit, extended: true }))
 app.use(express.static('client/public'))
 
 mongoose.Promise = Promise
@@ -31,4 +32,10 @@ app.use(cors())
 app.use('/api', apiRoutes)
 app.get('*', (req, res) => res.sendFile('client/build/index.html'))
 
-app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT}`))
+app.listen(PORT, () => {
+	console.log(`App listening at http://localhost:${PORT}`)
+	  // Helps to keep the deployment live on Heroku
+	setInterval(function() {
+		http.get(process.env.HEROKUURL);
+	}, 600000); // every 10 minutes
+})
